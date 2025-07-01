@@ -144,7 +144,7 @@
               style="background-color: rgb(255, 0, 0)"
               class="w-100 text-black border-0 p-2 fw-bold"
             >
-              Price <span class="qumit">790</span> &nbsp;
+              Prices <span class="qumit">790</span> &nbsp;
             </button>
           </div>
         </div>
@@ -162,7 +162,6 @@
       let buyNowBtn = document.querySelector(".btn-outline-primary");
       let slide = document.querySelector("#topModal");
       let close = document.querySelector("#closeModal");
-      let stop = new Audio("stop.mp3");
 
       buyNowBtn.addEventListener("click", () => {
         slide.classList.add("show");
@@ -170,7 +169,6 @@
 
       closeModal.addEventListener("click", () => {
         slide.classList.remove("show");
-        stop.play();
       });
 
       let counter = 1;
@@ -179,15 +177,12 @@
       const decreaseBtn = document.querySelector("#decreaseBtn");
       let qumit = document.querySelector(".qumit");
       let price = 790;
-      const audioadd = new Audio("adil.mp3");
-      const audioless = new Audio("jadil.mp3");
 
       increaseBtn.addEventListener("click", () => {
         counter++;
         counterValue.innerText = counter;
         price = price + 790;
         qumit.innerText = price;
-        audioadd.play();
       });
 
       decreaseBtn.addEventListener("click", () => {
@@ -196,7 +191,6 @@
           counterValue.innerText = counter;
           price = price - 790;
           qumit.innerText = price;
-          audioless.play();
         }
       });
     </script>
