@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>KFC BIG DEAL</title>
+    <title>KFC-BIG DEAL</title>
     <link rel="stylesheet" href="style.css" />
     <link
       rel="stylesheet"
@@ -57,7 +57,7 @@
     <nav
       class="d-flex justify-content-between shadow-lg w-100 bg-danger pt-3 p-2 pe-5"
     >
-      <h1 class="text-white fs-5 py-2">KFC PAKISTAN</h1>
+      <h1 class="text-white fs-5 py-2">KFC Pakistan</h1>
       <div class="cart-container text-white">
         🛒 <span id="cartCount" class="cart-count">0</span>
       </div>
@@ -67,8 +67,8 @@
     >
       <div class="card bg-black w-75 rounded-5 d-flex py-3 mx-5">
         <h1 class="text-capitalize ms-3 text-danger text-center">
-          KFC<br />
-          <span class="text-danger">PAKISTAN</span>
+          KFC <br />
+          <span class="text-danger">Pakistan</span>
         </h1>
         <img
           class="m-auto rounded-4"
@@ -162,12 +162,15 @@
       let buyNowBtn = document.querySelector(".btn-outline-primary");
       let slide = document.querySelector("#topModal");
       let close = document.querySelector("#closeModal");
+      let stop = new Audio("stop.mp3");
 
       buyNowBtn.addEventListener("click", () => {
         slide.classList.add("show");
       });
+
       closeModal.addEventListener("click", () => {
         slide.classList.remove("show");
+        stop.play();
       });
 
       let counter = 1;
@@ -176,6 +179,8 @@
       const decreaseBtn = document.querySelector("#decreaseBtn");
       let qumit = document.querySelector(".qumit");
       let price = 790;
+      const audioadd = new Audio("adil.mp3");
+      const audioless = new Audio("jadil.mp3");
 
       increaseBtn.addEventListener("click", () => {
         counter++;
@@ -184,6 +189,7 @@
         qumit.innerText = price;
         audioadd.play();
       });
+
       decreaseBtn.addEventListener("click", () => {
         if (counter > 1) {
           counter--;
