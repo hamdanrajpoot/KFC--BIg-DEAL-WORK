@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KFC BIG DEAL</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous"
+    />
+  </head>
+  <style>
+    .top-modal {
+      position: fixed;
+      top: -100%;
+      left: 21%;
+      height: 550px;
+
+      width: 50%;
+      background-color: #7c2424;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      padding: 20px;
+      z-index: 1050;
+      transition: top 0.5s ease;
+      text-align: center;
+      border-radius: 25px;
+    }
+
+    .top-modal.show {
+      top: 20px;
+    }
+
+    .top-modal .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 24px;
+      font-weight: bold;
+      border: none;
+      background: none;
+      cursor: pointer;
+      color: white;
+    }
+    .top-modal .close-btn:hover {
+      background-color: red;
+    }
+  </style>
+
+  <body>
+    <nav
+      class="d-flex justify-content-between shadow-lg w-100 bg-danger pt-3 p-2 pe-5"
+    >
+      <h1 class="text-white fs-5 py-2">KFC PAKISTAN</h1>
+      <div class="cart-container text-white">
+        🛒 <span id="cartCount" class="cart-count">0</span>
+      </div>
+    </nav>
+    <div
+      class="container daba justify-content-center align-items-center p-lg-3 mx-9 px-lg-5"
+    >
+      <div class="card bg-black w-75 rounded-5 d-flex py-3 mx-5">
+        <h1 class="text-capitalize ms-3 text-danger text-center">
+          KFC<br />
+          <span class="text-danger">PAKISTAN</span>
+        </h1>
+        <img
+          class="m-auto rounded-4"
+          width="33%"
+          src="https://tse2.mm.bing.net/th/id/OIP.FbGyg9JIB55oFl-lOcsInAHaEK?pid=Api&P=0&h=220"
+          alt=""
+        />
+        <div class="line \"></div>
+        <div class="text">
+          <h3 class="text-success p-2 mx-1">Value Bucket</h3>
+          <p class="text-info p-2 text-info mx-2">
+            Two mouth-watering burgers set against a fiery backdrop...!
+          </p>
+          <p class="text-danger fw-bold mx-3">Price: 1800-/Rs</p>
+          <button class="btn btn-outline-success fw-bold add-btn my-2 mx-3">
+            Add to Cart
+          </button>
+          <button class="btn btn-outline-primary ms-2 my-2 mx-3">
+            Buy Now
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="topModal" class="top-modal">
+      <button class="close-btn" id="closeModal">
+        <i class="bi bi-x-lg"></i>
+      </button>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7">
+            <div class="cont d-flex align-items-center w-75">
+              <h1 class="fs-5 text-black">- Burger</h1>
+              <p class="text-black p-1">/ Required /</p>
+            </div>
+            <div class="cont d-flex align-items-center mt-3 w-75">
+              <h1 class="fs-5 text-black">- Fries</h1>
+              <p class="text-black p-1">/ Required /</p>
+            </div>
+            <div class="cont d-flex align-items-center mt-3 w-75">
+              <h1 class="fs-5 text-black">- Cold-Drink</h1>
+              <p class="text-black p-1">/ Required /</p>
+            </div>
+            <div class="cont d-flex align-items-center mt-3 w-75">
+              <h1 class="fs-5 text-black p-1">- Add Ons</h1>
+              <p class="text-black">/ Optional /</p>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <img
+              width="100%"
+              src="https://geekculture.co/wp-content/uploads/2021/08/KFC-BBQ-cheese-zinger-meal.jpg"
+              alt=""
+            />
+            <h3 class="text-black">Crispy Zinger Big Box</h3>
+            <p class="text-black">BIG Taste , BIG DEAL...!</p>
+            <div class="container text-center mb-0">
+              <h3 class="mb-0 text-success">Counter</h3>
+              <div
+                class="d-flex justify-content-center align-items-center gap-3"
+              >
+                <button class="btn btn-outline-danger" id="decreaseBtn">
+                  −
+                </button>
+                <span id="counterValue" class="fs-4 text-black">1</span>
+                <button class="btn btn-outline-danger" id="increaseBtn">
+                  +</button
+                ><br />
+                <br />
+                −
+              </div>
+            </div>
+            <button
+              style="background-color: rgb(255, 0, 0)"
+              class="w-100 text-black border-0 p-2 fw-bold"
+            >
+              Price <span class="qumit">790</span> &nbsp;
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      let count = 0;
+      const cartCountEl = document.getElementById("cartCount");
+      document.querySelectorAll(".add-btn").forEach((button) => {
+        button.addEventListener("click", () => {
+          count++;
+          cartCountEl.innerText = count;
+        });
+      });
+      let buyNowBtn = document.querySelector(".btn-outline-primary");
+      let slide = document.querySelector("#topModal");
+      let close = document.querySelector("#closeModal");
+
+      buyNowBtn.addEventListener("click", () => {
+        slide.classList.add("show");
+      });
+      closeModal.addEventListener("click", () => {
+        slide.classList.remove("show");
+      });
+
+      let counter = 1;
+      const counterValue = document.querySelector("#counterValue");
+      const increaseBtn = document.querySelector("#increaseBtn");
+      const decreaseBtn = document.querySelector("#decreaseBtn");
+      let qumit = document.querySelector(".qumit");
+      let price = 790;
+
+      increaseBtn.addEventListener("click", () => {
+        counter++;
+        counterValue.innerText = counter;
+        price = price + 790;
+        qumit.innerText = price;
+        audioadd.play();
+      });
+      decreaseBtn.addEventListener("click", () => {
+        if (counter > 1) {
+          counter--;
+          counterValue.innerText = counter;
+          price = price - 790;
+          qumit.innerText = price;
+          audioless.play();
+        }
+      });
+    </script>
+  </body>
+</html>
